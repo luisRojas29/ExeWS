@@ -3,6 +3,7 @@ package com.caja.entities;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.validation.annotation.Validated;
@@ -35,6 +36,7 @@ public class Department
 		this.name = name;
 	}
 
+	@ManyToMany( mappedBy="departments" )
 	public Set<Employee> getEmployees() {
 		return employees;
 	}
