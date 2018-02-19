@@ -2,8 +2,14 @@ package com.caja.entities;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +25,12 @@ public class Department
 	private String name;
 	
 	private Set<Employee> employees;
+	
+	private Department department;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
@@ -44,6 +55,18 @@ public class Department
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
+
+	@ManyToOne
+	@JoinColumn(name="company_id")
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
+	
 	
 	
 }
