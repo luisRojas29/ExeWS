@@ -21,7 +21,6 @@ public class EmployeeController
 	private EmployeeService employeeServ;
 	
 	@RequestMapping( method = RequestMethod.GET )
-	//private ResponseEntity<?> getAll(){
 	private List<Employee> getAll(){
 		
 		employees = employeeServ.findAll();
