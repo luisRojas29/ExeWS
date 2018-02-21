@@ -2,7 +2,6 @@ package com.caja.resources;
 
 import java.util.Collection;
 
-import javax.inject.Inject;
 import javax.websocket.server.PathParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -11,10 +10,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.caja.entities.Employee;
 import com.caja.services.EmployeeService;
 
+@Component
 @Path("/employees")
 @Produces("application/json")
 public class EmployeeResource
@@ -32,18 +33,18 @@ public class EmployeeResource
 	}
 	
 	@GET
-	//public Collection<Employee> getEmployees() throws NotFoundException {
-	public String getEmployees() throws NotFoundException {
-		/*
+	public Collection<Employee> getEmployees() throws NotFoundException {
+	//public String getEmployees(){
+		
 		employees = employeeService.findAll();
 		
 		if( employees == null ) throw new NotFoundException();
 		
-		return employees;*/
+		return employees;
 		
-		return "Hola";
+		//return "Hola";
 	}
-	
+	/*
 	@Path("/{id}")
 	@GET
 	public Employee getEmployee(@PathParam("id") int id) throws NotFoundException {
@@ -53,6 +54,6 @@ public class EmployeeResource
 		if( employees == null ) throw new NotFoundException();
 		
 		return employee;
-	}
+	}*/
 	
 }

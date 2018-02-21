@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
@@ -31,6 +32,7 @@ public class Employee
 	@NotNull(message = "Es necesario ingresar un apellido de usuario")
 	private String lname;
 	
+	@Transient
 	private Set<Department> departments;
 
 	@Id
@@ -60,8 +62,8 @@ public class Employee
 		this.lname = lname;
 	}
 
-	@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL )
-	@JoinTable( name="employee_department", joinColumns= @JoinColumn(name = "employee_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name="department_id", referencedColumnName="id") )
+	//@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+	//@JoinTable( name="employee_department", joinColumns= @JoinColumn(name = "employee_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name="department_id", referencedColumnName="id") )
 	public Set<Department> getDepartments() {
 		return departments;
 	}

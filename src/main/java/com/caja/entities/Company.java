@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
@@ -23,6 +24,7 @@ public class Company
 	
 	private String name;
 	
+	@Transient
 	private Set<Department> departments;
 
 	@Id
@@ -44,7 +46,7 @@ public class Company
 		this.name = name;
 	}
 
-	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
 	public Set<Department> getDepartments() {
 		return departments;
 	}

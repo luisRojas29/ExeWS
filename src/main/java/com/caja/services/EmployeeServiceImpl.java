@@ -3,12 +3,12 @@ package com.caja.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.caja.entities.Employee;
 import com.caja.repositories.EmployeeRepository;
 
-@Service
+@Component
 public class EmployeeServiceImpl implements EmployeeService
 {
 	@Autowired

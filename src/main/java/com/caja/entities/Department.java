@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.validation.annotation.Validated;
 
 @Entity
@@ -24,9 +25,8 @@ public class Department
 	
 	private String name;
 	
+	@Transient
 	private Set<Employee> employees;
-	
-	private Department department;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public class Department
 		this.name = name;
 	}
 
-	@ManyToMany( mappedBy="departments" )
+	//@ManyToMany( mappedBy="departments" )
 	public Set<Employee> getEmployees() {
 		return employees;
 	}
@@ -55,18 +55,6 @@ public class Department
 	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
-
-	@ManyToOne
-	@JoinColumn(name="company_id")
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-	
-	
 	
 	
 }

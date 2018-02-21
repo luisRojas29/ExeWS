@@ -6,13 +6,16 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@ApplicationPath("/")
+import com.caja.resources.EmployeeResource;
+
 @Component
+@ApplicationPath("/jax")
 public class JaxrsApp extends ResourceConfig
 {
 	@Autowired
 	public JaxrsApp() {
-		packages("com.caja.resources");
+		//packages("com.caja.resources");
+		register(EmployeeResource.class);
 	}
 
 
